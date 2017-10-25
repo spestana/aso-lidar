@@ -1,0 +1,10 @@
+{
+    "pipeline": [
+        "C:\\Users\\steve\\Downloads\\New folder\\ground_only0158.las",
+		{
+			"resolution": 1,
+			"radius": 14.14,
+			"filename":"C:\\Users\\steve\\Downloads\\New folder\\DTM_0158.tif"
+		}
+     ]
+}
