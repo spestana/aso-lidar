@@ -1,10 +1,11 @@
 {
     "pipeline": [
-        "C:\\Users\\steve\\Downloads\\New folder\\ground_only0158.las",
-		{
-			"resolution": 1,
-			"radius": 14.14,
-			"filename":"C:\\Users\\steve\\Downloads\\New folder\\DTM_0158.tif"
-		}
+        "C:\\Users\\steve\\OneDrive\\Documents\\School Stuff\\UW\\Mountain Hydrology Research Group\\Notebooks\\data\\split0156.las",
+        {   
+		    "type" : "writers.gdal",
+			"gdaldriver" : "Gtiff",
+            "resolution": 5,
+            "filename":"C:\\Users\\steve\\OneDrive\\Documents\\School Stuff\\UW\\Mountain Hydrology Research Group\\Notebooks\\data\\split0156.tif"
+        }
      ]
 }

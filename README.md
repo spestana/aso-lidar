@@ -106,3 +106,25 @@
 ```
     pdal pipeline filename.json
 ```
+
+# DTMs
+#### Extracting ground points
+```
+pdal translate "input_file.las" -o "output_file.las" smrf range --filters.range.limits="Classification[2:2]" -v 4
+```
+
+#### Writing to raster GeoTiff
+
+```
+{
+    "pipeline": [
+        "input_filename.las",
+        {   
+		    "type" : "writers.gdal",
+			"gdaldriver" : "Gtiff",
+            "resolution": 5,
+            "filename":"output_filename.tif"
+        }
+     ]
+}
+```
