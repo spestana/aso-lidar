@@ -1,6 +1,8 @@
 # Notes on PDAL Pipelines
 ###### spestana@uw.edu
 
+[_PDAL - Point Data Abstraction Library_](https://www.pdal.io/)
+
 ### Splitting LAS Files
 * Specify input filepath
 * Use [filters.divider](https://www.pdal.io/stages/filters.divider.html) with the following options:
@@ -13,11 +15,11 @@
 ```
 {
   "pipeline":[
-	"\input\filepath\filename.las",
+    "\input\filepath\filename.las",
     {
-	  "tag" : "splitLasFile",
+      "tag" : "splitLasFile",
       "type" : "filters.divider",
-	  "mode" : "partition",
+      "mode" : "partition",
       "count" : "10"
     },
     {
@@ -32,12 +34,13 @@
 ### Filter Discrete Returns
 * [filters.range](https://www.pdal.io/stages/filters.range.html) simple filter for specified dimension(s):
   * `limits` - dimension name and range to include 
-  * _e.g._ filter to values of R where x <= R <= y --> "R[x:y]; filter to values of R where R is NOT a < R <= b --> "R!(a:b]"
+    * _e.g._ filter to values of R where x <= R <= y --> "R[x:y]
+    * _e.g._ filter to values of R where R is NOT a < R <= b --> "R!(a:b]"
 
 ```
  ...
-	{
-	  "tag" : "filterReturns",
+    {
+      "tag" : "filterReturns",
       "type" : "filters.range",
       "limits" : "ReturnNumber[1:1]"
     },
@@ -56,11 +59,11 @@
 ```
  ...
    {
-	  "tag" : "pointDensityRaster",
+      "tag" : "pointDensityRaster",
       "type" : "writers.gdal",
-	  "resolution": 10,
-	  "output_type" : "count",
-	  "gdaldriver" : "GTiff",
+      "resolution": 10,
+      "output_type" : "count",
+      "gdaldriver" : "GTiff",
       "filename" : "pointDensityRater_10m.tif"
     }
  ...
@@ -73,25 +76,25 @@
 
 ```
  ...
-	{
-	...
-	  "tag" : "firstStep",
-	...
-	},
-	{
-	...
-	  "tag" : "secondStep",
-	...
-	},
-	{
-	...
-	  "tag" : "lastStep"
-	  "inputs" : [
-					"firstStep",
-					"secondStep"
-				 ],
-	...
-	}
+    {
+    ...
+      "tag" : "firstStep",
+    ...
+    },
+    {
+    ...
+      "tag" : "secondStep",
+    ...
+    },
+    {
+    ...
+      "tag" : "lastStep"
+      "inputs" : [
+                    "firstStep",
+                    "secondStep"
+                 ],
+    ...
+    }
  ...
 ```
 
@@ -99,7 +102,7 @@
 
 # Executing Pipelines
 * From a terminal, call up the pipeline json file that is to be executed
-* (Optionally include variables as arguments)
+  * (Optionally include variables as arguments)
 ```
-	pdal pipeline filename.json
+    pdal pipeline filename.json
 ```
