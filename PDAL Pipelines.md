@@ -94,3 +94,12 @@
 	}
  ...
 ```
+
+---
+
+# Executing Pipelines
+* From a terminal, call up the pipeline json file that is to be executed
+* (Optionally include variables as arguments)
+```
+	pdal pipeline filename.json
+```
