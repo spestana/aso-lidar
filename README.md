@@ -113,6 +113,11 @@
 pdal translate "input_file.las" -o "output_file.las" smrf range --filters.range.limits="Classification[2:2]" -v 4
 ```
 
+#### Extracting Non-ground points
+```
+pdal translate "input_file.las" -o "output_file.las" smrf range --filters.range.limits="Classification![2:2]" -v 4
+```
+
 #### Writing to raster GeoTiff
 
 ```
@@ -127,4 +132,9 @@ pdal translate "input_file.las" -o "output_file.las" smrf range --filters.range.
         }
      ]
 }
+```
+
+#### LAStools - lasdiff
+```
+lasdiff -i "input_ground_surface.las" -i "input_nonground_surface.las" -o "output_diff.las"
 ```
