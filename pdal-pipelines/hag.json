@@ -1,0 +1,24 @@
+{
+  "pipeline":[
+    "C:\\Users\\steve\\Downloads\\New Folder\\LAS\\tiles\\tiles2\\split2_0000009.las",
+	{
+	  "tag" : "SMRFclassify",
+      "type" : "filters.smrf"
+    },
+    {
+	  "tag" : "HAGfilter",
+      "type":"filters.hag",
+	  "inputs" : [ "SMRFclassify" ]
+    },
+    {
+	  "tag" : "writeGtiffOut",
+      "type" : "writers.gdal",
+	  "inputs" : [ "HAGfilter" ],
+	  "gdaldriver" : "Gtiff",
+	  "output_type" : "mean",
+      "resolution" : 5,
+	  "dimension" : "Z",
+      "filename" : "C:\\Users\\steve\\Downloads\\New Folder\\LAS\\tiles\\tiles2\\split2_0000009_hag.tif"
+    }
+  ]
+}
