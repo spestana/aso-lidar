@@ -1,13 +1,13 @@
 {
   "pipeline":[
-    "C:\\Users\\steve\\OneDrive\\Documents\\School Stuff\\UW\\Mountain Hydrology Research Group\\Notebooks\\data\\split0156.las",
+    "input.las",
     {
       "type":"filters.range",
       "limits":"ReturnNumber[1:1]"
     },
     {
       "type":"writers.las",
-      "filename":"C:\\Users\\steve\\OneDrive\\Documents\\School Stuff\\UW\\Mountain Hydrology Research Group\\Notebooks\\data\\split0156_firstReturns.las"
+      "filename":"output.las"
     }
   ]
 }

@@ -1,11 +1,11 @@
 {
     "pipeline": [
-        "C:\\Users\\steve\\OneDrive\\Documents\\School Stuff\\UW\\Mountain Hydrology Research Group\\Notebooks\\data\\split0156.las",
+        "input.las",
         {   
 		    "type" : "writers.gdal",
 			"gdaldriver" : "Gtiff",
             "resolution": 5,
-            "filename":"C:\\Users\\steve\\OneDrive\\Documents\\School Stuff\\UW\\Mountain Hydrology Research Group\\Notebooks\\data\\split0156.tif"
+            "filename":"output.tif"
         }
      ]
 }

@@ -1,6 +1,6 @@
 {
   "pipeline":[
-	"C:\\Users\\steve\\Downloads\\New folder\\LAS\\USWAOL20160208f1a1 - Channel 1 - 160208_172446_1 - originalpoints_dem_filter.las",
+	"input.las",
     {
 	  "tag" : "firstReturns",
       "type" : "filters.range",
@@ -12,10 +12,10 @@
 	  "inputs" : [
 					"firstReturns"
 				 ],
-	  "resolution": 100,
+	  "resolution": 10,
 	  "output_type" : "count",
 	  "gdaldriver" : "GTiff",
-      "filename" : "C:\\Users\\steve\\Downloads\\New folder\\LAS\\USWAOL20160208f1a1 - Channel 1 - 160208_172446_1 - originalpoints_dem_filter.tif"
+      "filename" : "output.tif"
     }
   ]
 }
