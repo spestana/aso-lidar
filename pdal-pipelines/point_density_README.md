@@ -2,13 +2,13 @@
 ## First Return Point Density
 ###### spestana@uw.edu
 ---
-### Background:
+### Background Information:
 
 A lidar instrument calculates the distance to, and the relative position of, a distant point using the return time of flight of the reflected laser and the known laser emission geometry. [6]
 The reflecting point's position with respect to Earth's surface can then be determined by using the instrument's precise location, as informed by GPS and inertial navigation. [6]
 Divergenge, or spread, of a laser beam on the order of 0.3-1.0 mrad corresponds to a laser footprint size of 0.3-1.0 m at a distance of 1000 m from the target surface. This beam divergence allows a single laser pulse to reflect off of multiple objects at different heights within the footprint area. These multiple reflections are read by the instrument as a return wavepacket, which can then be discretized into a number of returns at specific points that met a return intensity threshold. [3]
 
-The point density of a lidar dataset can be quantified as the average number of laser pulse return signals detected per unit area. Alternatively, this can also be reported as a linear measurement of the average spacing between points. Point density of lidar data acquired from an aircraft is a function of instrument parameters and aircraft motion. The instrument's laser pulse rate, and scan rate (the oscillating or rotating mirror's angular velocity) can provide information about the minimum cross-track point spacing. The down-track point spacing is controlled by the aircraft's ground speed, the instrument's scan rate, and scan pattern. The scan angles covered by the instrument, the aircraft's altitude (AGL), and the flight line control the overlapping of ground tracks (swath width) that can greatly increase point density and help to minimize errors by scanning locations from multiple angles. [1] Point density can change at a finer scale within a single flight line as changes in aircraft pitch can cause scan line overlaps or gaps. Surfaces closer to normal with the incident laser pulse (smaller angle of incidence) can return higher intensity reflections, 
+The point density of a lidar dataset can be quantified as the average number of laser pulse return signals detected per unit area. Alternatively, this can also be reported as a linear measurement of the average spacing between points. Point density of lidar data acquired from an aircraft is a function of instrument parameters and aircraft motion. The instrument's laser pulse rate, and scan rate (the oscillating or rotating mirror's angular velocity) can provide information about the minimum cross-track point spacing. The down-track point spacing is controlled by the aircraft's ground speed, the instrument's scan rate, and scan pattern. The scan angles covered by the instrument, the aircraft's altitude (AGL), and the flight line control the overlapping of ground tracks (swath width) that can greatly increase point density and help to minimize errors by scanning locations from multiple angles. [1] Point density can change at a finer scale within a single flight line as changes in aircraft pitch can cause scan line overlaps or gaps. Surfaces closer to normal with the incident laser pulse (smaller angle of incidence) can return higher intensity reflections, especially in steeply sloping terrain where "timewalk" errors can occur. 
 
 The first return point density of a lidar product provides information about how the data can be used in further analysis, and if special considerations need to be made in areas of greatly differing point density. Many applications utilizing lidar data rely on creating a digital surface model (DSM) from the collected point cloud (such as in the case of determining snow depth by subtracting snow-off from snow-on DSMs). These DSM are created by methods of interpolation (such as inverse distance weighting, IDW) between observed points. The resulting DSM grid element size should match the magnitude of the average point spacing (a measure of point density). Performing interpolation with low point density data can lead to a smoother DSM and the loss of sub-grid features. [1]
 
@@ -28,7 +28,7 @@ The LAS files processed by the ASO team from the raw flight data have filtered d
 Each LAS file contains the data collected in a single aircraft flightline, and was processed individually to produce a point density map.
 
 ---
-### Workflow:
+### First Return Point Density Workflow:
 
 Each LAS file was processed using a PDAL pipeline to select only the first return detected from each laser pulse emitted. Only the first returns were considered in these point density maps in order to remove some of the factors that beam divergence, vegetation and other sub-footprint surface variations would have on reporting point density from all returns. When all returns are considered, the point density also shows surface "roughness" rather than factors of interest here such as beam incident angle and aircraft position and flight path.
 These first returns were then binned into 10m pixels and written out as a raster. The values of these pixels report the number of first returns received from within the 10x10m pixel ( pts/10m^2), which can be converted to the standard point density measure of pts/m^2. A batch file was written to process whole directories of LAS files through the PDAL pipeline. Within a GIS package (QGIS was used here) these rasters can be added together to compute the final point density within each pixel that resulted from overlaps in flightline swaths.
@@ -119,4 +119,5 @@ endlocal
 
 ---
 
-![alt text](https://raw.githubusercontent.com/Stevexe/aso-lidar/master/img/googleearth%20overlay.PNG "First Return Point Density Overlay in Google Earth")
+> #### Google Earth Overlay Example
+> ![alt text](https://raw.githubusercontent.com/Stevexe/aso-lidar/master/img/googleearth%20overlay.PNG "First Return Point Density Overlay in Google Earth")
